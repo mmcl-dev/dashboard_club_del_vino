@@ -1,4 +1,83 @@
-function ContentRowProducts () {
+import React, {Component} from 'react';
+
+
+class ContentRowProducts extends Component {
+	//constructor--- para guardar la informacion o inicializar variables o funciones.
+	constructor(props){
+		super(props);
+		this.state = {
+			totalProducts : 0,
+			totalCategories : 0,
+			totalUsers : 0
+		}
+	}
+	//cuando monta todo lo que tiene que renderizar
+	componentDidMount(){
+		console.log('metodo de montaje del componente ContentRowProducts');
+		this.apiCall("http://localhost:3030/api/v1/products/list", this.showCantProducts);
+		this.apiCall("http://localhost:3030/api/v1/products/listofcategories", this.showCantCategories);
+		this.apiCall("http://localhost:3030/api/v1/users", this.showCantUsers);
+	}
+
+	//cuando actualiza el componente
+	componentDidUpdate(){
+		console.log('metodo de actualizacion del componente ContentRowProducts');
+	}
+
+	//***************el fetch para consultar a la api**************************
+	apiCall(url, consecuencia){
+		fetch(url)
+		.then( response => response.json() )
+		.then( data => consecuencia(data) )
+		.catch( error => console.log(error) )
+	}
+
+	//*************actualizamos informacion de cantidad de productos************
+	//al usar setState tenemos que usar arrowfunction
+	showCantProducts = (data) => {
+		this.setState({
+			totalProducts: data.meta.totalProducts
+		})
+	}
+
+	showCantCategories = (data) => {
+		this.setState({
+			totalCategories: data.meta.totalCategories
+		})
+	}
+
+	showCantUsers = (data) => {
+		this.setState({
+			totalUsers: data.meta.totalUsers
+		})
+	}
+
+
+	//**********Metodo de renderizado *******************************
+	render(){
+	//logica para mostrar un "cargando" o el resultado traido de la api
+		let contTotalProducts;
+		if(this.state.totalProducts == 0){
+			contTotalProducts = <span>Cargando....</span>
+		}else{
+			contTotalProducts= <span>{this.state.totalProducts}</span>
+		}
+
+		let contTotalCategories;
+		if(this.state.totalCategories == 0){
+			contTotalCategories = <span>Cargando....</span>
+		}else{
+			contTotalCategories= <span>{this.state.totalCategories}</span>
+		}
+
+		let contTotalUsers;
+		if(this.state.totalUsers == 0){
+			contTotalUsers = <span>Cargando....</span>
+		}else{
+			contTotalUsers= <span>{this.state.totalUsers}</span>
+		}
+
+	//se renderiza el contenido
     return ( 
         // <!-- Content Row Products-->
 					<div className="row">
@@ -9,11 +88,11 @@ function ContentRowProducts () {
 								<div className="card-body">
 									<div className="row no-gutters align-items-center">
 										<div className="col mr-2">
-											<div className="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Productos</div>
-											<div className="h5 mb-0 font-weight-bold text-gray-800">21</div>
+											<div className="text-xs font-weight-bold text-primary text-uppercase mb-1">Cantidad total de Productos</div>
+											<div className="h5 mb-0 font-weight-bold text-gray-800">{ contTotalProducts }</div>
 										</div>
 										<div className="col-auto">
-											<i className="fas fa-film fa-2x text-gray-300"></i>
+											<i className="fas fa-wine-glass-alt fa-2x text-gray-300"></i>
 										</div>
 									</div>
 								</div>
@@ -26,11 +105,11 @@ function ContentRowProducts () {
 								<div className="card-body">
 									<div className="row no-gutters align-items-center">
 										<div className="col mr-2">
-											<div className="text-xs font-weight-bold text-success text-uppercase mb-1"> Ventas del mes</div>
-											<div className="h5 mb-0 font-weight-bold text-gray-800">79</div>
+											<div className="text-xs font-weight-bold text-success text-uppercase mb-1"> Cantidad total de categorias</div>
+											<div className="h5 mb-0 font-weight-bold text-gray-800">{ contTotalCategories }</div>
 										</div>
 										<div className="col-auto">
-											<i className="fas fa-award fa-2x text-gray-300"></i>
+											<i className="fas fa-wine-bottle fa-2x text-gray-300"></i>
 										</div>
 									</div>
 								</div>
@@ -43,9 +122,9 @@ function ContentRowProducts () {
 								<div className="card-body">
 									<div className="row no-gutters align-items-center">
 										<div className="col mr-2">
-											<div className="text-xs font-weight-bold text-warning text-uppercase mb-1">Ventas semanales
+											<div className="text-xs font-weight-bold text-warning text-uppercase mb-1">Cantidad total de usuarios
 											</div>
-											<div className="h5 mb-0 font-weight-bold text-gray-800">49</div>
+											<div className="h5 mb-0 font-weight-bold text-gray-800">{ contTotalUsers }</div>
 										</div>
 										<div className="col-auto">
 											<i className="fas fa-user fa-2x text-gray-300"></i>
@@ -57,6 +136,7 @@ function ContentRowProducts () {
 					</div>
 					// <!-- End Porducts in Data Base -->
        )
+	}
 }
 
 export default ContentRowProducts;
