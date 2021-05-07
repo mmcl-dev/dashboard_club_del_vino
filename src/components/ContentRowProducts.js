@@ -99,7 +99,7 @@ class ContentRowProducts extends Component {
 							</div>
 						</div>
 
-						{/* <!-- Total awards --> */}
+						{/* <!-- Total Categorias en DB --> */}
 						<div className="col-md-4 mb-4">
 							<div className="card border-left-success shadow h-100 py-2">
 								<div className="card-body">
@@ -116,7 +116,7 @@ class ContentRowProducts extends Component {
 							</div>
 						</div>
 
-						{/* <!-- Actors quantity --> */}
+						{/* <!-- Total de usuarios en la DB --> */}
 						<div className="col-md-4 mb-4">
 							<div className="card border-left-warning shadow h-100 py-2">
 								<div className="card-body">

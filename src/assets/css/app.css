@@ -394,6 +394,87 @@ h6 {
 	line-height: 1.2
 }
 
+/*****Cambios para mostrar info error404**************/
+.container404 {
+	background-color: #f0efef;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding-right: .75rem;
+	padding-left: .75rem;
+	margin-right: auto;
+	margin-left: auto
+	
+}
+img .center404{
+	text-align: center;
+}
+
+/*****cambios para mostrar el listado de productos********/
+.listHeaderProducts{
+	display: flex;
+	justify-content: space-between;
+	list-style: none;
+	align-items: center;
+	margin-bottom: 0rem;
+	padding-right: 40px;
+}
+.listProducts{
+	display: flex;
+	justify-content: space-between;
+	list-style: none;
+	align-items: center;
+	margin-bottom: 0rem;
+}
+.itemListProductName{
+	width: 300px;
+}
+.itemListProductDate{
+	width: 150px;
+}
+.itemListProductPrice{
+	width: 150px;
+	text-align: right;
+}
+.imageList{
+	max-height: 3rem;
+}
+
+/******cambios para mostrar el listado de usuarios*********/
+.listHeaderUsers{
+	display: flex;
+	justify-content: space-between;
+	list-style: none;
+	align-items: center;
+	margin-bottom: 0rem;
+	padding-right: 40px;
+}
+.listUsers{
+	display: flex;
+	justify-content: space-between;
+	list-style: none;
+	align-items: center;
+	margin-bottom: 0rem;
+}
+.itemListUserName{
+	width: 200px;
+}
+.itemListUserDate{
+	width: 150px;
+	text-align: right;
+}
+.itemListUserEmail{
+	width: 250px;
+	
+}
+.imageList{
+	max-height: 3rem;
+}
+/*****************************************************/
+
+
 .h1,
 h1 {
 	font-size: 2.5rem

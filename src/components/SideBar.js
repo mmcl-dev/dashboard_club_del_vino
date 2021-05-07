@@ -1,4 +1,5 @@
 import logo from '../assets/images/logoClubDelVino.png';
+import {Link} from 'react-router-dom';
 
 function SideBar () {
     return (
@@ -16,26 +17,28 @@ function SideBar () {
 
 			{/* <!-- Nav Item - Productos --> */}
 			<li className="nav-item">
-				<a className="nav-link" href="/">
+				<Link className="nav-link" to="/listProducts">
 					<i className="fas fa-fw fa-folder"></i>
-					<span>Productos</span></a>
+					<span>Productos</span></Link>
 			</li>
 
 			{/* <!-- Nav Item - Usuarios --> */}
 			<li className="nav-item">
-				<a className="nav-link" href="/">
+				<Link className="nav-link" to="/listUsers">
 					<i className="fas fa-fw fa-folder"></i>
-					<span>Users</span></a>
+					<span>Usuarios</span></Link>
 			</li>
 
 			{/* <!-- Divider --> */}
 			<hr className="sidebar-divider d-none d-md-block" />
 
-			{/* <!-- Nav Item - Usuarios --> */}
 			<li className="nav-item">
-				<a className="nav-link" href="http://localhost:3030/">
+				{/*<a className="nav-link" href="http://localhost:3030/"> esto era para linkear a la pagina home de club del vino. por ahora se saca.
 					<i className="fas fa-link"></i>
-					<span>Home</span></a>
+					<span>Home</span></a>*/}
+				<Link className="nav-link" to="/">
+					<i className="fas fa-fw fa-folder"></i>
+					<span>Home</span></Link>
 			</li>
 			{/* <!-- Divider --> */}
 			<hr className="sidebar-divider d-none d-md-block" />
